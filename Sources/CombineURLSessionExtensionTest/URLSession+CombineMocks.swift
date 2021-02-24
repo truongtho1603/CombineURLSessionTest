@@ -6,6 +6,7 @@
 
 import Foundation
 import Combine
+import CombineURLSessionExtension
 
 class MockDataTaskPublisher<T>: DataTaskPublisherProtocol {
     var mockTryMapSubject = PassthroughSubject<T, Error>()

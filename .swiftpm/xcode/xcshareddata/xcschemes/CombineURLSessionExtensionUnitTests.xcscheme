@@ -16,9 +16,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CombineURLSessionTestTests"
-               BuildableName = "CombineURLSessionTestTests"
-               BlueprintName = "CombineURLSessionTestTests"
+               BlueprintIdentifier = "CombineURLSessionExtensionUnitTests"
+               BuildableName = "CombineURLSessionExtensionUnitTests"
+               BlueprintName = "CombineURLSessionExtensionUnitTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>

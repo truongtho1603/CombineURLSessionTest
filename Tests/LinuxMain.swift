@@ -1,7 +1,6 @@
 import XCTest
-
-import CombineURLSessionTestTests
+import CombineURLSessionExtension_UnitTests
 
 var tests = [XCTestCaseEntry]()
-tests += CombineURLSessionTestTests.allTests()
+tests += CombineURLSessionExtension_UnitTests.allTests()
 XCTMain(tests)
