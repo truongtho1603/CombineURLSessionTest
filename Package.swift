@@ -12,16 +12,16 @@ let package = Package(
         .watchOS(.v6)
     ],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "CombineURLSessionExtension",
-            targets: ["CombineURLSessionExtension", "CombineURLSessionExtensionTest"])
+            targets: ["CombineURLSessionExtension"]),
+        .library(
+            name: "CombineURLSessionExtensionTest",
+            targets: ["CombineURLSessionExtensionTest"]),
     ],
     dependencies: [
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "CombineURLSessionExtension",
             dependencies: []),
@@ -30,7 +30,7 @@ let package = Package(
             dependencies: ["CombineURLSessionExtension"]),
         .testTarget(
             name: "CombineURLSessionExtensionUnitTests",
-            dependencies: ["CombineURLSessionExtension"]),
+            dependencies: ["CombineURLSessionExtension, CombineURLSessionExtensionTest"]),
         .testTarget(
             name: "CombineURLSessionExtensionTestUnitTests",
             dependencies: ["CombineURLSessionExtensionTest"])
