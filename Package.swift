@@ -30,9 +30,6 @@ let package = Package(
             dependencies: ["CombineURLSessionExtension"]),
         .testTarget(
             name: "CombineURLSessionExtensionUnitTests",
-            dependencies: ["CombineURLSessionExtension, CombineURLSessionExtensionTest"]),
-        .testTarget(
-            name: "CombineURLSessionExtensionTestUnitTests",
-            dependencies: ["CombineURLSessionExtensionTest"])
+            dependencies: ["CombineURLSessionExtension, CombineURLSessionExtensionTest"])
     ]
 )
