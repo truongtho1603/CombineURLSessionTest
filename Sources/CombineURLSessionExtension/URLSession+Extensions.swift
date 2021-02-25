@@ -16,7 +16,7 @@ extension URLSession: URLSessionProtocol {
     public func dataTaskPublisherForRequest(_ request: URLRequest) -> DataTaskPublisherProtocol {
         dataTaskPublisher(for: request)
     }
-
+    
     public func dataTaskPublisherForURL(_ url: URL) -> DataTaskPublisherProtocol {
         dataTaskPublisher(for: url)
     }
@@ -25,7 +25,7 @@ extension URLSession: URLSessionProtocol {
 public protocol DataTaskPublisherProtocol {
     func tryMapPublisher<T>(_ transform: @escaping ((data: Data, response: URLResponse)) throws -> T) -> AnyPublisher<T, Error>
     func mapKeyPath<T>(_ keyPath: KeyPath<(data: Data, response: URLResponse), T>) -> AnyPublisher<T, URLError>
-
+    
     func receiveOn<S: Scheduler>(scheduler: S,
                                  options: S.SchedulerOptions?) -> AnyPublisher<URLSession.DataTaskPublisher.Output, URLError>
 }
@@ -36,13 +36,13 @@ extension URLSession.DataTaskPublisher: DataTaskPublisherProtocol {
     public func tryMapPublisher<T>(_ transform: @escaping ((data: Data, response: URLResponse)) throws -> T) -> AnyPublisher<T, Error> {
         tryMap(transform).eraseToAnyPublisher()
     }
-
+    
     public func mapKeyPath<T>(_ keyPath: KeyPath<(data: Data, response: URLResponse), T>) -> AnyPublisher<T, URLError> {
         map(keyPath).eraseToAnyPublisher()
     }
-
+    
     public func receiveOn<S: Scheduler>(scheduler: S,
-                                 options: S.SchedulerOptions?) -> AnyPublisher<URLSession.DataTaskPublisher.Output, URLError> {
+                                        options: S.SchedulerOptions?) -> AnyPublisher<URLSession.DataTaskPublisher.Output, URLError> {
         receive(on: scheduler,
                 options: options).eraseToAnyPublisher()
     }

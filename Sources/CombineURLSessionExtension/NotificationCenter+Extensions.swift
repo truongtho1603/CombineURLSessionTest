@@ -14,7 +14,7 @@ public protocol NotificationCenterProtocol: class {
 
 extension NotificationCenter: NotificationCenterProtocol {
     public func publisherFor(_ name: Notification.Name,
-                      _ object: AnyObject?) -> NotificationCenterPublisherProtocol {
+                             _ object: AnyObject?) -> NotificationCenterPublisherProtocol {
         publisher(for: name, object: object) as NotificationCenterPublisherProtocol
     }
 }
