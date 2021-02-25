@@ -13,6 +13,8 @@ public class MockDataTaskPublisher<T>: DataTaskPublisherProtocol {
     public var mockMapKeyPathSubject = PassthroughSubject<T, URLError>()
     public var mockReceiveOnSubject = PassthroughSubject<URLSession.DataTaskPublisher.Output, URLError>()
 
+    public init() {}
+
     public func tryMapPublisher<T>(_ transform: @escaping ((data: Data, response: URLResponse)) throws -> T) -> AnyPublisher<T, Error> {
         mockTryMapSubject
             .map { $0 as! T }
@@ -33,8 +35,9 @@ public class MockDataTaskPublisher<T>: DataTaskPublisherProtocol {
 
 public class MockURLSession<T>: URLSessionProtocol {
     public var mockDataTaskPublisher: (URLRequest) -> DataTaskPublisherProtocol = { _ in MockDataTaskPublisher<T>() }
-
     public var mockDataTaskPublisherURL: (URL) -> DataTaskPublisherProtocol = { _ in MockDataTaskPublisher<T>() }
+
+    public init() {}
 
     public func dataTaskPublisherForRequest(_ request: URLRequest) -> DataTaskPublisherProtocol {
         mockDataTaskPublisher(request)
@@ -48,6 +51,8 @@ public class MockURLSession<T>: URLSessionProtocol {
 public class MockNotificationCenterPublisher<T>: NotificationCenterPublisherProtocol {
     public let mockMapTransformSubject = PassthroughSubject<Notification, Never>()
 
+    public init() {}
+
     public func mapTransform<T>(_ transform: @escaping (Notification) -> T) -> AnyPublisher<T, Never> {
         mockMapTransformSubject
             .map(transform)
@@ -57,6 +62,8 @@ public class MockNotificationCenterPublisher<T>: NotificationCenterPublisherProt
 
 public class MockCombineNotificationCenter: NotificationCenterProtocol {
     public var mockPublisherFor: (String, AnyObject?) -> NotificationCenterPublisherProtocol = { _, _ in MockNotificationCenterPublisher<Any>() }
+
+    public init() {}
 
     public func publisherFor(_ name: Notification.Name,
                              _ object: AnyObject?) -> NotificationCenterPublisherProtocol {
