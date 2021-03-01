@@ -15,18 +15,22 @@ public class MockDataTaskPublisher<T>: DataTaskPublisherProtocol {
 
     public init() {}
 
+    // swiftlint:disable line_length
     public func tryMapPublisher<T>(_ transform: @escaping ((data: Data, response: URLResponse)) throws -> T) -> AnyPublisher<T, Error> {
         mockTryMapSubject
+            // swiftlint:disable force_cast
             .map { $0 as! T }
             .eraseToAnyPublisher()
     }
 
     public func mapKeyPath<T>(_ keyPath: KeyPath<(data: Data, response: URLResponse), T>) -> AnyPublisher<T, URLError> {
         mockMapKeyPathSubject
+            // swiftlint:disable force_cast
             .map { $0 as! T }
             .eraseToAnyPublisher()
     }
 
+    // swiftlint:disable line_length
     public func receiveOn<S: Scheduler>(scheduler: S,
                                         options: S.SchedulerOptions?) -> AnyPublisher<URLSession.DataTaskPublisher.Output, URLError> {
         mockReceiveOnSubject.eraseToAnyPublisher()
@@ -61,6 +65,7 @@ public class MockNotificationCenterPublisher<T>: NotificationCenterPublisherProt
 }
 
 public class MockCombineNotificationCenter: NotificationCenterProtocol {
+    // swiftlint:disable line_length
     public var mockPublisherFor: (String, AnyObject?) -> NotificationCenterPublisherProtocol = { _, _ in MockNotificationCenterPublisher<Any>() }
 
     public init() {}

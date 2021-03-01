@@ -5,6 +5,6 @@ final class CombineURLSessionExtensionUnitTests: CombineBaseTestCase {
     func testExample() {}
 
     static var allTests = [
-        ("testExample", testExample),
+        ("testExample", testExample)
     ]
 }

@@ -17,7 +17,7 @@ let package = Package(
             targets: ["CombineURLSessionExtension"]),
         .library(
             name: "CombineURLSessionExtensionTest",
-            targets: ["CombineURLSessionExtensionTest"]),
+            targets: ["CombineURLSessionExtensionTest"])
     ],
     dependencies: [
     ],
